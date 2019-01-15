@@ -1,33 +1,32 @@
 <div class="row">
     <div class="col-md-12">
-        <h1 class="display-8">欢迎来到九章全栈课程</h1>
+        <h1 class="display-8" style="text-align: center">Welcome To The Fullstack Web Developer Course</h1>
 
-        <!--<div [ngSwitch]="isAuthenticated()">-->
-            <!--<div class="alert alert-success" *ngSwitchCase="true">-->
-                <!--<span *ngIf="account"-->
-                   <!--&gt; You are logged in as user "{{account.login}}". </span>-->
-            <!--</div>-->
+        <div [ngSwitch]="isAuthenticated()">
+            <div class="alert alert-success" *ngSwitchCase="true">
+                <span *ngIf="account"> You are logged in as user "{{account.login}}". </span>
+            </div>
 
-            <!--<div class="alert alert-warning" *ngSwitchCase="false">-->
-                <!--<span>If you want to </span>-->
-                <!--<a class="alert-link" (click)="login()">sign in</a><span>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>-->
-            <!--</div>-->
-            <!--<div class="alert alert-warning" *ngSwitchCase="false">-->
-                <!--<span>You don't have an account yet?</span>&nbsp;-->
-                <!--<a class="alert-link" routerLink="register">Register a new account</a>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div>-->
-            <!--<div>Course_Name</div>-->
-            <!--<div>Course_Location</div>-->
-            <!--<div>Course_Content</div>-->
-            <!--<div>Teacher_ID</div>-->
-        <!--</div>-->
+            <div class="alert alert-warning" *ngSwitchCase="false">
+                <span>If you want to </span>
+                <a class="alert-link" (click)="login()">sign in</a><span>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>
+            </div>
+            <div class="alert alert-warning" *ngSwitchCase="false">
+                <span>You don't have an account yet?</span>&nbsp;
+                <a class="alert-link" routerLink="register">Register a new account</a>
+            </div>
+        </div>
+        <div *ngIf="isAuthenticated()">
+            <div>Course_Name</div>
+            <div>Course_Location</div>
+            <div>Course_Content</div>
+            <div>Teacher_ID</div>
+        </div>
         <div *ngIf="isAuthenticated()">
             <hr>
-            <span>课程查询/注册功能</span>
+            <span>Course Query/Registration</span>
             <hr>
-        <div><span><button (click)="getAllCourses()">显示所有课程</button> <button (click)="clearAllCourses()">清除</button></span></div>
+            <div><span><button (click)="getAllCourses()">Show all courses</button> <button (click)="clearAllCourses()">Clear</button></span></div>
             <div *ngFor="let course of courses" style="padding-bottom: 2px">
                 <div style="display: flex; width: 100%; height: 40px; justify-content: space-between; border-top: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid">
                     <div style="padding-left: 5px">{{course.courseName}}</div>
@@ -40,9 +39,9 @@
 
         <div *ngIf="isAuthenticated()">
             <hr>
-            <span>课程查询</span>
+            <span>Course Query</span>
             <hr>
-            <div><span><button (click)="getAllCoursesWithTN()">显示所有课程</button> <button (click)="clearAllCourses()">清除</button></span></div>
+            <div><span><button (click)="getAllCoursesWithTN()">Show all courses</button> <button (click)="clearAllCoursesWithTN()">Clear</button></span></div>
             <div *ngFor="let course of coursesWithTN" style="padding-bottom: 2px">
                 <div style="display: flex; width: 100%; height: 40px; justify-content: space-between; border-top: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid">
                     <div style="padding-left: 5px">{{course.courseName}}</div>
@@ -53,13 +52,14 @@
             </div>
         </div>
 
-        <!--<div *ngIf="isAuthenticated()">-->
-            <!--<hr>-->
-            <!--<span>注册功能</span>-->
-            <!--<hr>-->
-            <!--<div><input [ngModel]= "classeNameNeedToReg" ]></div>-->
-            <!--<div><span><button (click)="getAllCoursesWithTN()">注册课程</button> </span></div>-->
-        <!--</div>-->
+        <div *ngIf="isAuthenticated()">
+            <hr>
+            <span>Course Registration</span>
+            <hr>
+            <div><input [(ngModel)]= "classNameNeedToReg" ></div>
+            <div><span><button (click)="registerCourse(classNameNeedToReg)">Register</button> </span></div>
+            <div>Status{{regCode}}</div>
+        </div>
 
     </div>
 </div>
