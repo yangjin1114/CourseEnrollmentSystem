@@ -58,7 +58,42 @@
             <hr>
             <div><input [(ngModel)]= "classNameNeedToReg" ></div>
             <div><span><button (click)="registerCourse(classNameNeedToReg)">Register</button> </span></div>
-            <div>Status{{regCode}}</div>
+            <div>Status {{regCode}}</div>
+        </div>
+
+        <div *ngIf="isAuthenticated()">
+            <hr>
+            <span>Add/Delete Course</span>
+            <hr>
+            <span>Add Course</span>
+            <hr>
+            <div>Course Name: <input [(ngModel)]= "newCourseName" ><br>
+                Course Location: <input [(ngModel)]= "newCourseLocation"><br>
+                Course Content: <input [(ngModel)]= "newCourseContent" ><br>
+                Teacher ID: <input [(ngModel)]= "newTeacher" ><br>
+            </div>
+            <div><span><button (click)="addCourse()">Add Course</button> </span></div>
+            <div>Status {{addCode}}</div>
+
+            <hr>
+            <span>Delete Course</span>
+            <hr>
+            <div>Course Name: <input [(ngModel)]= "classNameNeedToDel" ></div>
+            <div><span><button (click)="deleteCourse()">Delete</button> </span></div>
+            <div>Status {{delCode}}</div>
+            <hr>
+            <span>Add/Delete Course</span>
+
+            <hr>
+            <span>Update Course</span>
+            <hr>
+            <div>Course Name: <input [(ngModel)]= "updateCourseName" ><br>
+                Course Location: <input [(ngModel)]= "updateCourseLocation"><br>
+                Course Content: <input [(ngModel)]= "updateCourseContent" ><br>
+                Teacher ID: <input [(ngModel)]= "updateTeacher" ><br>
+            </div>
+            <div><span><button (click)="updateCourse()">Update Course</button> </span></div>
+            <div>Status {{updateCode}}</div>
         </div>
 
     </div>

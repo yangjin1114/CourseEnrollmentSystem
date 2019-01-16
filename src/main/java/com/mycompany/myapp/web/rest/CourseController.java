@@ -48,6 +48,7 @@ public class CourseController {
         try {
             courseService.registerCourse(courseName);
             return HttpStatus.OK;
+
         } catch (Exception e) {
             return HttpStatus.UNPROCESSABLE_ENTITY;
         }

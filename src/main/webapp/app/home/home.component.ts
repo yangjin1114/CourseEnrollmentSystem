@@ -15,8 +15,24 @@ import { CourseWithTNDto } from 'app/shared/model/courseWithTN-dto.model';
 export class HomeComponent implements OnInit {
     account: Account;
     modalRef: NgbModalRef;
+
     classNameNeedToReg: string;
     regCode: string;
+
+    classNameNeedToDel: string;
+    delCode: string;
+
+    newCourseName: string;
+    newCourseLocation: string;
+    newCourseContent: string;
+    newTeacher: string;
+    addCode: string;
+
+    updateCourseName: string;
+    updateCourseLocation: string;
+    updateCourseContent: string;
+    updateTeacher: string;
+    updateCode: string;
 
     constructor(
         private principal: Principal,
@@ -83,6 +99,38 @@ export class HomeComponent implements OnInit {
     registerCourse(courseName) {
         this.courseService.register(courseName).subscribe(resp => {
             this.regCode = resp;
+        });
+    }
+
+    addCourse() {
+        const newCourse: CourseDto = {
+            courseName: this.newCourseName,
+            courseLocation: this.newCourseLocation,
+            courseContent: this.newCourseContent,
+            courseTeacher: this.newTeacher
+        };
+
+        this.courseService.add(newCourse).subscribe(resp => {
+            this.addCode = resp;
+        });
+    }
+
+    deleteCourse() {
+        this.courseService.delete(this.classNameNeedToDel).subscribe(resp => {
+            this.delCode = resp;
+        });
+    }
+
+    updateCourse() {
+        const updateCourse: CourseDto = {
+            courseName: this.updateCourseName,
+            courseLocation: this.updateCourseLocation,
+            courseContent: this.updateCourseContent,
+            courseTeacher: this.updateTeacher
+        };
+
+        this.courseService.update(updateCourse).subscribe(resp => {
+            this.updateCode = resp;
         });
     }
 }
